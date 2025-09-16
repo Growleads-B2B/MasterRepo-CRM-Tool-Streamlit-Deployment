@@ -167,6 +167,10 @@ class SpreadsheetProcessor:
                 # Fill NaN values with empty strings for better display
                 master_df = master_df.fillna('')
                 
+                # Ensure all columns are string type for consistent display and export
+                for col in master_df.columns:
+                    master_df[col] = master_df[col].astype(str)
+                
                 return master_df
                 
             except Exception as e:

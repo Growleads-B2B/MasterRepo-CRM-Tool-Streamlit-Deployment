@@ -4,7 +4,11 @@
       "Bash(python:*)",
       "Read(//var/folders/_7/lxqrj2mx7dsgmk2dktg5rvnw0000gn/T/TemporaryItems/NSIRD_screencaptureui_7MpLJ2/**)",
       "Bash(git remote set-url:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(pip install:*)",
+      "Bash(streamlit run:*)"
     ],
     "deny": [],
     "ask": []
