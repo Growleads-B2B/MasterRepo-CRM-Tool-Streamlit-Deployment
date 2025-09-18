@@ -15,292 +15,463 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Custom CSS for Subtle Warm Light Theme UI/UX
+# Comprehensive Adaptive Theme System - Beautiful in Both Dark & Light Modes
 st.markdown("""
 <style>
-/* Force light theme override for all browser preferences */
+/* ========================================
+   ADAPTIVE THEME SYSTEM - WARM PROFESSIONAL DESIGN
+   Beautiful in both Dark & Light modes
+   ======================================== */
+/* Light Theme Variables (Default) */
 :root {
-    color-scheme: light !important;
+    --bg-primary: #ffffff;
+    --bg-secondary: #fefcf9;
+    --bg-tertiary: #f8f4f0;
+    --bg-card: #ffffff;
+    --bg-sidebar: #fefefe;
+    --bg-header: #ffffff;
+    --bg-accent: #f8f5f2;
+    --bg-hover: #f5f1ec;
+    
+    --text-primary: #3d3530;
+    --text-secondary: #5a4f47;
+    --text-muted: #8b7a6b;
+    --text-accent: #b8956e;
+    --text-inverse: #ffffff;
+    
+    --border-primary: #f0e6d8;
+    --border-secondary: #e8ddd4;
+    --border-accent: #d4b3a0;
+    
+    --accent-primary: #e0bfa8;
+    --accent-secondary: #d4b3a0;
+    --accent-tertiary: #c8a694;
+    --accent-gradient: linear-gradient(45deg, #e0bfa8, #d4b3a0);
+    
+    --shadow-light: 0 2px 8px rgba(212, 146, 111, 0.08);
+    --shadow-medium: 0 4px 16px rgba(212, 146, 111, 0.12);
+    --shadow-heavy: 0 8px 32px rgba(212, 146, 111, 0.16);
+    
+    --success-bg: #f0fdf4;
+    --success-border: #22c55e;
+    --success-text: #166534;
+    
+    --warning-bg: #fefce8;
+    --warning-border: #eab308;
+    --warning-text: #a16207;
+    
+    --error-bg: #fef2f2;
+    --error-border: #ef4444;
+    --error-text: #dc2626;
+    
+    --info-bg: #f0f9ff;
+    --info-border: #3b82f6;
+    --info-text: #0369a1;
 }
 
-* {
-    color-scheme: light !important;
-}
-
-html {
-    color-scheme: light !important;
-}
-
-body {
-    color-scheme: light !important;
-}
-
-/* Media queries to override dark mode preferences */
+/* Dark Theme Variables */
 @media (prefers-color-scheme: dark) {
     :root {
-        color-scheme: light !important;
-    }
-    
-    * {
-        color-scheme: light !important;
-    }
-    
-    .stApp {
-        background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%) !important;
-        color: #3d3530 !important;
+        --bg-primary: #1a1612;
+        --bg-secondary: #2a241e;
+        --bg-tertiary: #3a332b;
+        --bg-card: #2a241e;
+        --bg-sidebar: #1f1b16;
+        --bg-header: #2a241e;
+        --bg-accent: #3a332b;
+        --bg-hover: #4a4137;
+        
+        --text-primary: #f0ede8;
+        --text-secondary: #d4c7b8;
+        --text-muted: #a69584;
+        --text-accent: #d4926f;
+        --text-inverse: #1a1612;
+        
+        --border-primary: #4a4137;
+        --border-secondary: #5a5147;
+        --border-accent: #d4926f;
+        
+        --accent-primary: #d4926f;
+        --accent-secondary: #c8956e;
+        --accent-tertiary: #b8956e;
+        --accent-gradient: linear-gradient(45deg, #d4926f, #c8956e);
+        
+        --shadow-light: 0 2px 8px rgba(0, 0, 0, 0.2);
+        --shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.3);
+        --shadow-heavy: 0 8px 32px rgba(0, 0, 0, 0.4);
+        
+        --success-bg: #0f2a0f;
+        --success-border: #22c55e;
+        --success-text: #4ade80;
+        
+        --warning-bg: #2a2a0f;
+        --warning-border: #eab308;
+        --warning-text: #fbbf24;
+        
+        --error-bg: #2a0f0f;
+        --error-border: #ef4444;
+        --error-text: #f87171;
+        
+        --info-bg: #0f1a2a;
+        --info-border: #3b82f6;
+        --info-text: #60a5fa;
     }
 }
 
-@media (prefers-color-scheme: light) {
-    :root {
-        color-scheme: light !important;
-    }
-    
-    * {
-        color-scheme: light !important;
-    }
-    
-    .stApp {
-        background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%) !important;
-        color: #3d3530 !important;
-    }
-}
+/* ========================================
+   GLOBAL ADAPTIVE STYLING
+   ======================================== */
 
-/* Global subtle warm light theme styling - force override */
+/* Base App Styling */
 .stApp {
-    background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%) !important;
-    color: #3d3530 !important;
-    color-scheme: light !important;
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .main > div {
     padding: 1rem 2rem;
-    background: transparent;
+    background: var(--bg-primary) !important;
 }
 
-/* Header styling - Subtle Warm Theme */
+/* ========================================
+   HEADER & CARD COMPONENTS
+   ======================================== */
+
+/* Main Header */
 .main-header {
-    background: linear-gradient(135deg, #f8f5f2 0%, #f0ebe6 100%);
+    background: var(--bg-header) !important;
     padding: 2.5rem 2rem;
     border-radius: 20px;
     margin-bottom: 2.5rem;
-    box-shadow: 0 6px 25px rgba(232, 168, 124, 0.08);
+    box-shadow: var(--shadow-medium) !important;
     text-align: center;
-    border: 1px solid #f0e6d8;
+    border: 1px solid var(--border-accent) !important;
     backdrop-filter: blur(10px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-header:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-heavy) !important;
 }
 
 .main-header h1 {
     margin: 0;
     font-size: 2.5rem;
     font-weight: 700;
-    color: #3d3530;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.8);
+    color: var(--text-primary);
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: none;
 }
 
 .main-header p {
     margin: 0.5rem 0 0 0;
     font-size: 1.1rem;
     opacity: 0.95;
-    color: #5a4f47;
+    color: var(--text-secondary);
 }
 
-/* Card styling - Subtle Warm Theme */
+/* Feature Cards */
 .feature-card {
-    background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%);
+    background: var(--bg-card) !important;
     padding: 1.5rem;
-    border-radius: 12px;
+    border-radius: 16px;
     margin: 1rem 0;
-    border: 1px solid #f0e6d8 !important;
-    box-shadow: 0 3px 12px rgba(212, 146, 111, 0.06);
+    border: 1px solid var(--border-primary) !important;
+    box-shadow: var(--shadow-light) !important;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Sidebar styling - Subtle Warm Theme - Force override all themes */
+.feature-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium) !important;
+    border-color: var(--border-accent) !important;
+}
+
+/* ========================================
+   SIDEBAR STYLING
+   ======================================== */
+
+/* Main Sidebar Container */
 .css-1d391kg {
-    background: linear-gradient(180deg, #f8f5f2 0%, #f0ebe6 100%) !important;
-    color-scheme: light !important;
-    border-right: 1px solid #e8ddd4 !important;
-    box-shadow: 2px 0 10px rgba(212, 146, 111, 0.08) !important;
+    background: var(--bg-sidebar) !important;
+    border-right: 2px solid var(--border-accent) !important;
+    box-shadow: var(--shadow-light) !important;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .css-1d391kg .css-1v0mbdj {
-    background: linear-gradient(180deg, #f8f5f2 0%, #f0ebe6 100%) !important;
-    color-scheme: light !important;
+    background: var(--bg-sidebar) !important;
 }
 
 /* Enhanced sidebar container */
 [data-testid="stSidebar"] > div:first-child {
-    background: linear-gradient(180deg, #f8f5f2 0%, #f0ebe6 100%) !important;
-    border-right: 1px solid #e8ddd4 !important;
-    box-shadow: 2px 0 10px rgba(212, 146, 111, 0.08) !important;
+    background: var(--bg-sidebar) !important;
+    border-right: 2px solid var(--border-accent) !important;
+    box-shadow: var(--shadow-light) !important;
 }
 
-/* Force override for dark mode - Sidebar */
-@media (prefers-color-scheme: dark) {
-    .css-1d391kg {
-        background: linear-gradient(180deg, #fefefe 0%, #fbfaf8 100%) !important;
-        color: #3d3530 !important;
-    }
-    
-    .css-1d391kg .css-1v0mbdj {
-        background: linear-gradient(180deg, #fefbf8 0%, #faf6f2 100%) !important;
-        color: #3d3530 !important;
-    }
-}
-
-/* Streamlit theme override */
+/* Streamlit sidebar overrides */
 .stApp > div {
-    background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%) !important;
-    color: #3d3530 !important;
+    background: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
 }
 
 .stApp [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #fefefe 0%, #fbfaf8 100%) !important;
-    color: #3d3530 !important;
+    background: var(--bg-sidebar) !important;
+    color: var(--text-primary) !important;
+    border-right: 2px solid var(--border-accent) !important;
+    box-shadow: var(--shadow-light) !important;
 }
 
 .stApp [data-testid="stSidebar"] > div {
-    background: linear-gradient(180deg, #fefefe 0%, #fbfaf8 100%) !important;
-    color: #3d3530 !important;
+    background: var(--bg-sidebar) !important;
+    color: var(--text-primary) !important;
+    border-right: 2px solid var(--border-accent) !important;
 }
 
-/* Button styling - Subtle Warm Theme */
+/* ========================================
+   BUTTON COMPONENTS
+   ======================================== */
+
+/* Primary Buttons */
 .stButton > button {
-    background: linear-gradient(45deg, #e0bfa8, #d4b3a0) !important;
-    color: white !important;
+    background: var(--accent-gradient) !important;
+    color: var(--text-inverse) !important;
     border: none !important;
-    border-radius: 8px !important;
-    padding: 0.5rem 1rem !important;
+    border-radius: 12px !important;
+    padding: 0.75rem 1.5rem !important;
     font-weight: 600 !important;
-    transition: all 0.3s ease !important;
-    box-shadow: 0 2px 8px rgba(212, 146, 111, 0.15) !important;
-    color-scheme: light !important;
+    font-size: 0.95rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: var(--shadow-light) !important;
+    backdrop-filter: blur(8px);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Force button styling in dark mode */
-@media (prefers-color-scheme: dark) {
-    .stButton > button {
-        background: linear-gradient(45deg, #e0bfa8, #d4b3a0) !important;
-        color: white !important;
-        border: none !important;
-    }
+.stButton > button:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
 }
 
 .stButton > button:hover {
-    transform: translateY(-1px) !important;
-    box-shadow: 0 4px 12px rgba(212, 146, 111, 0.25) !important;
-    background: linear-gradient(45deg, #d4b3a0, #c8a694) !important;
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: var(--shadow-medium) !important;
+    background: linear-gradient(45deg, var(--accent-secondary), var(--accent-tertiary)) !important;
 }
 
-/* Success/Error message styling - Subtle Warm Theme */
+.stButton > button:hover:before {
+    left: 100%;
+}
+
+.stButton > button:active {
+    transform: translateY(0) scale(0.98) !important;
+}
+
+/* ========================================
+   ALERT & MESSAGE COMPONENTS
+   ======================================== */
+
+/* Base Alert Styling */
 .stAlert {
-    border-radius: 8px !important;
-    border: 1px solid #f0e6d8 !important;
-    background-color: #fefbf8 !important;
-    color: #3d3530 !important;
-    box-shadow: 0 2px 6px rgba(212, 146, 111, 0.05) !important;
+    border-radius: 12px !important;
+    border: 1px solid var(--border-primary) !important;
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    box-shadow: var(--shadow-light) !important;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Metric styling - Subtle Warm Theme */
+/* Success Messages */
+.stSuccess {
+    background-color: var(--success-bg) !important;
+    border: 1px solid var(--success-border) !important;
+    color: var(--success-text) !important;
+    border-radius: 12px !important;
+}
+
+/* Warning Messages */
+.stWarning {
+    background-color: var(--warning-bg) !important;
+    border: 1px solid var(--warning-border) !important;
+    color: var(--warning-text) !important;
+    border-radius: 12px !important;
+}
+
+/* Error Messages */
+.stError {
+    background-color: var(--error-bg) !important;
+    border: 1px solid var(--error-border) !important;
+    color: var(--error-text) !important;
+    border-radius: 12px !important;
+}
+
+/* Info Messages */
+.stInfo {
+    background-color: var(--info-bg) !important;
+    border: 1px solid var(--info-border) !important;
+    color: var(--info-text) !important;
+    border-radius: 12px !important;
+}
+
+/* ========================================
+   METRIC & FORM COMPONENTS
+   ======================================== */
+
+/* Metric Container */
 .metric-container {
-    background: linear-gradient(135deg, #ffffff 0%, #fefdfb 100%);
-    padding: 1.2rem;
-    border-radius: 10px;
-    border: 1px solid #f8f4f0;
-    box-shadow: 0 2px 8px rgba(212, 146, 111, 0.04);
+    background: var(--bg-card);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid var(--border-primary);
+    box-shadow: var(--shadow-light);
     margin: 0.5rem 0;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Data table styling - Subtle Warm Theme */
+.metric-container:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--border-accent);
+}
+
+/* ========================================
+   DATA TABLE & INPUT COMPONENTS
+   ======================================== */
+
+/* Data Tables */
 .stDataFrame {
-    border-radius: 8px !important;
+    border-radius: 12px !important;
     overflow: hidden !important;
-    box-shadow: 0 3px 10px rgba(212, 146, 111, 0.08) !important;
-    border: 1px solid #f0e6d8 !important;
-    background-color: #ffffff !important;
+    box-shadow: var(--shadow-light) !important;
+    border: 1px solid var(--border-primary) !important;
+    background-color: var(--bg-card) !important;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Streamlit specific styling fixes */
+.stDataFrame:hover {
+    box-shadow: var(--shadow-medium) !important;
+    border-color: var(--border-accent) !important;
+}
+
+/* Input Components */
 .stSelectbox > div > div {
-    background-color: #fefefe !important;
-    border: 1px solid #f0e6d8 !important;
-    border-radius: 6px !important;
-    color: #3d3530 !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-primary) !important;
+    border-radius: 8px !important;
+    color: var(--text-primary) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stSelectbox > div > div:hover {
+    border-color: var(--border-accent) !important;
+    box-shadow: var(--shadow-light) !important;
 }
 
 .stNumberInput > div > div > input {
-    background-color: #fefefe !important;
-    border: 1px solid #f0e6d8 !important;
-    border-radius: 6px !important;
-    color: #3d3530 !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-primary) !important;
+    border-radius: 8px !important;
+    color: var(--text-primary) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stNumberInput > div > div > input:focus {
+    border-color: var(--accent-primary) !important;
+    box-shadow: 0 0 0 3px rgba(212, 146, 111, 0.1) !important;
+}
+
+.stTextInput > div > div > input {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-primary) !important;
+    border-radius: 8px !important;
+    color: var(--text-primary) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stTextInput > div > div > input:focus {
+    border-color: var(--accent-primary) !important;
+    box-shadow: 0 0 0 3px rgba(212, 146, 111, 0.1) !important;
 }
 
 .stFileUploader > div {
-    border: 2px dashed #e8ddd4 !important;
-    border-radius: 10px !important;
-    background-color: #fefefe !important;
-    padding: 1rem !important;
+    border: 2px dashed var(--border-accent) !important;
+    border-radius: 12px !important;
+    background-color: var(--bg-card) !important;
+    padding: 1.5rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-primary) !important;
 }
 
-.stExpander {
-    border: 1px solid #f0e6d8 !important;
-    border-radius: 8px !important;
-    background-color: #fefefe !important;
+.stFileUploader > div:hover {
+    border-color: var(--accent-primary) !important;
+    background-color: var(--bg-hover) !important;
 }
 
-.stExpander .streamlit-expanderHeader {
-    background-color: #f9f6f3 !important;
-    color: #3d3530 !important;
-    border-bottom: 1px solid #f0e6d8 !important;
-}
-
-/* File uploader styling - Subtle Warm Theme */
 .stFileUploader {
-    border: 2px dashed #e8ddd4 !important;
-    border-radius: 10px !important;
+    border: 2px dashed var(--border-accent) !important;
+    border-radius: 12px !important;
     padding: 2rem !important;
     text-align: center !important;
-    background: linear-gradient(135deg, #fefefe 0%, #faf8f6 100%) !important;
+    background: var(--bg-card) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Fix file uploader text in dark mode */
+.stFileUploader [data-testid="stFileUploadDropzone"] {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+.stFileUploader [data-testid="stFileUploadDropzone"] p {
+    color: var(--text-primary) !important;
 }
 
 .stFileUploader label {
-    color: #3d3530 !important;
+    color: var(--text-primary) !important;
     font-weight: 600 !important;
 }
 
-/* Sidebar text styling */
-.css-1d391kg .stSelectbox label {
-    color: #3d3530 !important;
-    font-weight: 600 !important;
+.stExpander {
+    border: 1px solid var(--border-primary) !important;
+    border-radius: 12px !important;
+    background-color: var(--bg-card) !important;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Main content area text */
-.main .stMarkdown {
-    color: #3d3530 !important;
+.stExpander:hover {
+    border-color: var(--border-accent) !important;
+    box-shadow: var(--shadow-light) !important;
 }
 
-/* Warning and info messages */
-.stAlert[data-baseweb="notification"] {
-    background-color: #fef9f5 !important;
-    border: 1px solid #f0d0a0 !important;
-    color: #8b4513 !important;
+.stExpander .streamlit-expanderHeader {
+    background-color: var(--bg-accent) !important;
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--border-primary) !important;
 }
 
-/* Success messages */
-.stSuccess {
-    background-color: #f0f9f0 !important;
-    border: 1px solid #90ee90 !important;
-    color: #228b22 !important;
-}
+/* ========================================
+   NAVIGATION & RADIO COMPONENTS
+   ======================================== */
 
-/* Error messages */
-.stError {
-    background-color: #fff5f5 !important;
-    border: 1px solid #ffb3b3 !important;
-    color: #dc143c !important;
-}
-
-/* Minimalist radio navigation */
+/* Enhanced Radio Navigation */
 .css-1d391kg .stRadio {
     margin-bottom: 2rem !important;
     position: relative !important;
@@ -308,7 +479,7 @@ body {
 }
 
 .css-1d391kg .stRadio > div {
-    background: transparent !important;
+    background: var(--bg-sidebar) !important;
     padding: 0 !important;
     border: none !important;
     gap: 0.8rem !important;
@@ -317,20 +488,21 @@ body {
 }
 
 .css-1d391kg .stRadio > div > label {
-    background: linear-gradient(135deg, #ffffff 0%, #faf9f7 100%) !important;
-    border: 1px solid #e8ddd4 !important;
-    border-radius: 10px !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-primary) !important;
+    border-radius: 12px !important;
     padding: 0.8rem 1.2rem !important;
     margin: 0.5rem 0 !important;
-    color: #3d3530 !important;
+    color: var(--text-primary) !important;
     font-weight: 500 !important;
     cursor: pointer !important;
-    transition: all 0.2s ease !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
     width: 100% !important;
     display: block !important;
     text-align: left !important;
     position: relative !important;
     padding-left: 2.5rem !important;
+    backdrop-filter: blur(8px);
 }
 
 .css-1d391kg .stRadio > div > label:before {
@@ -339,476 +511,333 @@ body {
     left: 1rem !important;
     top: 50% !important;
     transform: translateY(-50%) !important;
-    width: 8px !important;
-    height: 8px !important;
+    width: 10px !important;
+    height: 10px !important;
     border-radius: 50% !important;
-    background: #e0bfa8 !important;
+    background: var(--accent-primary) !important;
     opacity: 0 !important;
-    transition: all 0.2s ease !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 0 5px rgba(212, 146, 111, 0.5) !important;
 }
 
 .css-1d391kg .stRadio > div > label:hover {
-    border-color: #d4b3a0 !important;
-    background: linear-gradient(135deg, #ffffff 0%, #f8f5f2 100%) !important;
+    border-color: var(--border-accent) !important;
+    background: var(--bg-hover) !important;
     transform: translateY(-1px) !important;
-    box-shadow: 0 2px 8px rgba(212, 146, 111, 0.1) !important;
+    box-shadow: var(--shadow-light) !important;
 }
 
 .css-1d391kg .stRadio > div > label[data-checked="true"] {
-    background: linear-gradient(135deg, #ffffff 0%, #f8f5f2 100%) !important;
-    border-color: #c8a694 !important;
-    border-left: 4px solid #c8a694 !important;
-    color: #3d3530 !important;
-    font-weight: 600 !important;
-    box-shadow: 0 3px 12px rgba(212, 146, 111, 0.15) !important;
+    background: var(--bg-accent) !important;
+    border-color: var(--accent-primary) !important;
+    border-left: 6px solid var(--accent-primary) !important;
+    color: var(--text-primary) !important;
+    font-weight: 700 !important;
+    box-shadow: var(--shadow-medium) !important;
 }
 
 .css-1d391kg .stRadio > div > label[data-checked="true"]:before {
     opacity: 1 !important;
-    background: #c8a694 !important;
+    background: var(--accent-primary) !important;
+    box-shadow: 0 0 8px rgba(212, 146, 111, 0.8) !important;
 }
 
-/* Enhanced sidebar styling */
-.css-1d391kg {
-    padding: 1.5rem 1rem !important;
+.css-1d391kg .stRadio > div > label[data-checked="true"]:after {
+    content: '•' !important;
+    position: absolute !important;
+    left: 1rem !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    color: var(--accent-primary) !important;
+    font-size: 24px !important;
+    font-weight: bold !important;
+    line-height: 0 !important;
 }
 
-.stRadio label {
-    color: #3d3530 !important;
-    font-weight: 500 !important;
-}
-
-/* Subheader styling */
-.stSubheader {
-    color: #3d3530 !important;
+/* Sidebar Text Styling */
+.css-1d391kg .stSelectbox label {
+    color: var(--text-primary) !important;
     font-weight: 600 !important;
 }
 
-/* Text input styling */
-.stTextInput > div > div > input {
-    background-color: #fefefe !important;
-    border: 1px solid #f0e6d8 !important;
-    border-radius: 6px !important;
-    color: #3d3530 !important;
+.css-1d391kg .stMarkdown {
+    color: var(--text-primary) !important;
 }
 
-/* Checkbox styling */
-.stCheckbox > label {
-    color: #3d3530 !important;
+.css-1d391kg h1, .css-1d391kg h2, .css-1d391kg h3, .css-1d391kg h4 {
+    color: var(--text-primary) !important;
+}
+
+/* Main Content Text */
+.main .stMarkdown {
+    color: var(--text-primary) !important;
+}
+
+/* ========================================
+   UNIVERSAL ADAPTIVE STYLING
+   ======================================== */
+
+/* Global Text Elements */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+}
+
+p, div, span, label {
+    color: var(--text-primary) !important;
+}
+
+.stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6 {
+    color: var(--text-primary) !important;
+}
+
+.stMarkdown p {
+    color: var(--text-primary) !important;
+}
+
+/* Widget Labels */
+[data-testid="stWidgetLabel"] {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+}
+
+.stRadio label {
+    color: var(--text-primary) !important;
     font-weight: 500 !important;
 }
 
-.nav-item:hover {
-    background: rgba(212, 146, 111, 0.1) !important;
+.stSubheader {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
 }
 
-/* Additional Streamlit component styling */
-.stSlider {
-    color: #3d3530 !important;
+.stCheckbox > label {
+    color: var(--text-primary) !important;
+    font-weight: 500 !important;
 }
 
-.stSlider > div > div {
-    color: #3d3530 !important;
+/* Caption and Small Text */
+.caption {
+    color: var(--text-muted) !important;
 }
 
+small {
+    color: var(--text-muted) !important;
+}
+
+/* ========================================
+   ADDITIONAL COMPONENTS
+   ======================================== */
+
+/* Metrics */
 .stMetric {
-    background-color: #fefefe !important;
-    border: 1px solid #f0e6d8 !important;
-    border-radius: 8px !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-primary) !important;
+    border-radius: 12px !important;
     padding: 1rem !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stMetric:hover {
+    border-color: var(--border-accent) !important;
+    box-shadow: var(--shadow-light) !important;
 }
 
 .stMetric label {
-    color: #3d3530 !important;
+    color: var(--text-primary) !important;
     font-weight: 600 !important;
 }
 
 .stMetric [data-testid="metric-container"] {
-    background-color: #fefefe !important;
+    background-color: var(--bg-card) !important;
 }
 
-/* Info/Warning/Success message containers */
-.stInfo {
-    background-color: #f0f4ff !important;
-    border: 1px solid #b3d1ff !important;
-    color: #1e40af !important;
-    border-radius: 8px !important;
-}
-
-.stWarning {
-    background-color: #fef9f5 !important;
-    border: 1px solid #f0d0a0 !important;
-    color: #8b4513 !important;
-    border-radius: 8px !important;
-}
-
-/* Sidebar specific overrides */
-.css-1d391kg {
-    background: linear-gradient(180deg, #fefefe 0%, #fbfaf8 100%) !important;
-}
-
-.css-1d391kg .stMarkdown {
-    color: #3d3530 !important;
-}
-
-.css-1d391kg h1, .css-1d391kg h2, .css-1d391kg h3, .css-1d391kg h4 {
-    color: #3d3530 !important;
-}
-
-/* Table headers and cells */
-thead th {
-    background-color: #f9f6f3 !important;
-    color: #3d3530 !important;
-    font-weight: 600 !important;
-    border-bottom: 2px solid #e8ddd4 !important;
-}
-
-tbody td {
-    color: #3d3530 !important;
-    border-bottom: 1px solid #f0e6d8 !important;
-}
-
-/* Pagination styling */
-.stPagination {
-    color: #3d3530 !important;
-}
-
-.stPagination button {
-    background-color: #fefefe !important;
-    border: 1px solid #f0e6d8 !important;
-    color: #3d3530 !important;
-}
-
-/* Download button styling */
-.stDownloadButton > button {
-    background: linear-gradient(45deg, #e0bfa8, #d4b3a0) !important;
-    color: white !important;
-    border: none !important;
-    border-radius: 8px !important;
-    padding: 0.5rem 1rem !important;
-    font-weight: 600 !important;
-    box-shadow: 0 2px 8px rgba(212, 146, 111, 0.15) !important;
-}
-    border: 1px solid #f0e6d8 !important;
-    box-shadow: 0 1px 3px rgba(212, 146, 111, 0.05) !important;
-}
-
-.stSelectbox > div > div > div {
-    background-color: #ffffff !important;
-    color: #3d3530 !important;
-    border: 1px solid #f0e6d8 !important;
-}
-
-/* Additional global text styling - Force override all themes */
-h1, h2, h3, h4, h5, h6 {
-    color: #3d3530 !important;
-}
-
-p, div, span, label {
-    color: #3d3530 !important;
-}
-
-/* Force text colors in dark mode */
-@media (prefers-color-scheme: dark) {
-    h1, h2, h3, h4, h5, h6 {
-        color: #3d3530 !important;
-    }
-    
-    p, div, span, label {
-        color: #3d3530 !important;
-    }
-    
-    .stApp {
-        background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%) !important;
-        color: #3d3530 !important;
-    }
-    
-    .main {
-        background: transparent !important;
-        color: #3d3530 !important;
-    }
-    
-    body {
-        background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%) !important;
-        color: #3d3530 !important;
-    }
-}
-
-/* Streamlit specific text elements */
-.stMarkdown h1, .stMarkdown h2, .stMarkdown h3, .stMarkdown h4, .stMarkdown h5, .stMarkdown h6 {
-    color: #3d3530 !important;
-}
-
-.stMarkdown p {
-    color: #3d3530 !important;
-}
-
-/* Form elements */
+/* Forms and Other Components */
 .stForm {
-    background-color: #fefefe !important;
-    border: 1px solid #f0e6d8 !important;
-    border-radius: 8px !important;
-    padding: 1rem !important;
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-primary) !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Column headers and text */
-.stColumn > div {
-    color: #3d3530 !important;
+.stForm:hover {
+    border-color: var(--border-accent) !important;
+    box-shadow: var(--shadow-light) !important;
 }
 
-/* Progress bar */
+/* Progress Bar */
 .stProgress {
-    background-color: #f0e6d8 !important;
+    background-color: var(--border-primary) !important;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .stProgress > div > div {
-    background-color: #e0bfa8 !important;
+    background: var(--accent-gradient) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Tab styling */
+/* Tabs */
 .stTabs {
-    color: #3d3530 !important;
+    color: var(--text-primary) !important;
 }
 
 .stTabs [data-baseweb="tab-list"] {
-    background-color: #fefefe !important;
+    background-color: var(--bg-card) !important;
+    border-radius: 12px 12px 0 0;
 }
 
 .stTabs [data-baseweb="tab"] {
-    background-color: #f9f6f3 !important;
-    color: #3d3530 !important;
-    border: 1px solid #f0e6d8 !important;
+    background-color: var(--bg-accent) !important;
+    color: var(--text-secondary) !important;
+    border: 1px solid var(--border-primary) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.stTabs [data-baseweb="tab-highlight"] {
-    background-color: #e0bfa8 !important;
-}
-
-/* Code blocks */
-.stCode {
-    background-color: #f9f6f3 !important;
-    border: 1px solid #f0e6d8 !important;
-    color: #3d3530 !important;
-}
-
-/* Sidebar navigation improvements */
-.css-1d391kg .element-container {
-    color: #3d3530 !important;
-}
-
-.css-1d391kg .stRadio > label {
-    color: #3d3530 !important;
-    font-weight: 600 !important;
-}
-
-.css-1d391kg .stRadio [data-testid="stWidgetLabel"] {
-    color: #3d3530 !important;
-    font-weight: 600 !important;
-}
-
-/* Widget labels */
-[data-testid="stWidgetLabel"] {
-    color: #3d3530 !important;
-    font-weight: 600 !important;
-}
-
-/* Caption text */
-.caption {
-    color: #8b7a6b !important;
-}
-
-/* Small text elements */
-small {
-    color: #8b7a6b !important;
-}
-
-/* Universal theme lock - Override ALL browser preferences */
-@media (prefers-color-scheme: dark) {
-    .stApp, .stApp > div, .main, body, html {
-        background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%) !important;
-        color: #3d3530 !important;
-        color-scheme: light !important;
-    }
-    
-    /* Force all Streamlit components in dark mode */
-    .stSelectbox, .stTextInput, .stNumberInput, .stFileUploader, 
-    .stExpander, .stDataFrame, .stMetric, .stAlert, .stForm,
-    .stCheckbox, .stRadio, .stSlider, .stTabs {
-        background-color: #fefefe !important;
-        color: #3d3530 !important;
-        border-color: #f0e6d8 !important;
-    }
-    
-    /* Force all input elements */
-    input, select, textarea, button:not(.stButton > button) {
-        background-color: #fefefe !important;
-        color: #3d3530 !important;
-        border-color: #f0e6d8 !important;
-    }
-    
-    /* Sidebar dark mode override */
-    [data-testid="stSidebar"], .css-1d391kg {
-        background: linear-gradient(180deg, #fefefe 0%, #fbfaf8 100%) !important;
-        color: #3d3530 !important;
-    }
-    
-    /* All text elements in dark mode */
-    * {
-        color: #3d3530 !important;
-    }
-    
-    /* Override any dark theme variables */
-    :root {
-        --background-color: #fefefe !important;
-        --text-color: #3d3530 !important;
-        --border-color: #f0e6d8 !important;
-    }
-}
-
-/* Force light mode styling regardless of system preference */
-.stApp * {
-    color-scheme: light !important;
-}
-
-/* Override Streamlit's default theme detection */
-.stApp[data-theme="dark"] {
-    background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%) !important;
-    color: #3d3530 !important;
-}
-
-.stApp[data-theme="light"] {
-    background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%) !important;
-    color: #3d3530 !important;
-}
-
-/* Force override any auto-detected theme */
-[data-testid="stAppViewContainer"] {
-    background: linear-gradient(135deg, #fefefe 0%, #faf9f7 100%) !important;
-    color: #3d3530 !important;
-}
-
-/* Complete theme lock */
-*, *::before, *::after {
-    color-scheme: light !important;
-}
-
-/* Multiselect - Subtle Warm Theme */
-.stMultiSelect > div > div > div {
-    background-color: #ffffff;
-    color: #2d2926;
-    border: 1px solid #f0e6d8;
-}
-
-/* Radio buttons - Subtle Warm Theme */
-.stRadio > div {
-    color: #2d2926;
-}
-
-/* Expander - Subtle Warm Theme */
-.streamlit-expanderHeader {
-    background-color: #fefaf7;
-    color: #2d2926;
-    border: 1px solid #f0e6d8;
-}
-
-.streamlit-expanderContent {
-    background-color: #ffffff;
-    border: 1px solid #f0e6d8;
-}
-
-/* Tabs - Subtle Warm Theme */
-.stTabs [data-baseweb="tab-list"] {
-    background-color: #fefaf7;
-}
-
-.stTabs [data-baseweb="tab"] {
-    color: #8b7a6b;
-    background-color: #fefaf7;
+.stTabs [data-baseweb="tab"]:hover {
+    background-color: var(--bg-hover) !important;
+    color: var(--text-primary) !important;
 }
 
 .stTabs [aria-selected="true"] {
-    color: #d4926f !important;
-    background-color: #ffffff !important;
-    border-bottom: 2px solid #d4926f !important;
+    color: var(--accent-primary) !important;
+    background-color: var(--bg-card) !important;
+    border-bottom: 2px solid var(--accent-primary) !important;
 }
 
-/* Sidebar text - Subtle Warm Theme */
-.css-1d391kg {
-    color: #2d2926;
+.stTabs [data-baseweb="tab-highlight"] {
+    background-color: var(--accent-primary) !important;
 }
 
-.css-1d391kg .stMarkdown {
-    color: #2d2926;
+/* Code Blocks */
+.stCode {
+    background-color: var(--bg-accent) !important;
+    border: 1px solid var(--border-primary) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px;
+    font-family: 'JetBrains Mono', monospace;
 }
 
-.css-1d391kg .stSelectbox label {
-    color: #2d2926 !important;
+/* Download Buttons */
+.stDownloadButton > button {
+    background: var(--accent-gradient) !important;
+    color: var(--text-inverse) !important;
+    border: none !important;
+    border-radius: 12px !important;
+    padding: 0.75rem 1.5rem !important;
+    font-weight: 600 !important;
+    box-shadow: var(--shadow-light) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
 
-/* Enhanced table styling - Subtle Warm Theme */
+.stDownloadButton > button:hover {
+    transform: translateY(-2px) scale(1.02) !important;
+    box-shadow: var(--shadow-medium) !important;
+}
+
+/* Table Headers and Cells */
+thead th {
+    background: var(--accent-gradient) !important;
+    color: var(--text-inverse) !important;
+    font-weight: 600 !important;
+    border-bottom: 2px solid var(--border-accent) !important;
+}
+
+tbody td {
+    color: var(--text-primary) !important;
+    border-bottom: 1px solid var(--border-primary) !important;
+    background-color: var(--bg-card) !important;
+}
+
+/* Enhanced Table Styling */
 .enhanced-table {
     font-size: 14px;
-    background-color: #ffffff;
-    color: #2d2926;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow-light);
 }
 
 .enhanced-table td {
-    border-bottom: 1px solid #f0e6d8;
-    padding: 0.5rem;
-    background-color: #ffffff;
-    color: #2d2926;
+    border-bottom: 1px solid var(--border-primary);
+    padding: 0.75rem;
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.enhanced-table td:hover {
+    background-color: var(--bg-hover);
 }
 
 .enhanced-table th {
-    background: linear-gradient(45deg, #d4926f, #c8956e);
-    color: white;
+    background: var(--accent-gradient);
+    color: var(--text-inverse);
     font-weight: 600;
+    padding: 1rem 0.75rem;
 }
 
-/* Success messages - Subtle Warm Theme */
-.stSuccess {
-    background-color: #f0fdf4 !important;
-    color: #166534 !important;
-    border: 1px solid #22c55e !important;
+/* Sliders and Other Inputs */
+.stSlider {
+    color: var(--text-primary) !important;
 }
 
-/* Warning messages - Subtle Warm Theme */
-.stWarning {
-    background-color: #fefce8 !important;
-    color: #a16207 !important;
-    border: 1px solid #eab308 !important;
+.stSlider > div > div {
+    color: var(--text-primary) !important;
 }
 
-/* Error messages - Subtle Warm Theme */
-.stError {
-    background-color: #fef2f2 !important;
-    color: #dc2626 !important;
-    border: 1px solid #ef4444 !important;
-}
-
-/* Info messages - Subtle Warm Theme */
-.stInfo {
-    background-color: #f0f9ff !important;
-    color: #0369a1 !important;
-    border: 1px solid #3b82f6 !important;
-}
-
-/* Additional subtle warm accents */
-.stMetric {
-    background: linear-gradient(135deg, #ffffff 0%, #fefaf7 100%);
+/* Multi-select */
+.stMultiSelect > div > div > div {
+    background-color: var(--bg-card);
+    color: var(--text-primary);
+    border: 1px solid var(--border-primary);
     border-radius: 8px;
-    padding: 1rem;
-    box-shadow: 0 2px 6px rgba(212, 146, 111, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Subtle warm gradient backgrounds for sections */
+.stMultiSelect > div > div > div:hover {
+    border-color: var(--border-accent);
+    box-shadow: var(--shadow-light);
+}
+
+/* Pagination */
+.stPagination {
+    color: var(--text-primary) !important;
+}
+
+.stPagination button {
+    background-color: var(--bg-card) !important;
+    border: 1px solid var(--border-primary) !important;
+    color: var(--text-primary) !important;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.stPagination button:hover {
+    border-color: var(--border-accent) !important;
+    background-color: var(--bg-hover) !important;
+}
+
+/* Warm Section Styling */
 .warm-section {
-    background: linear-gradient(135deg, #fefaf7 0%, #f5f1ec 100%);
-    border-radius: 12px;
+    background: var(--bg-card);
+    border-radius: 16px;
     padding: 1.5rem;
     margin: 1rem 0;
-    box-shadow: 0 3px 10px rgba(212, 146, 111, 0.08);
+    box-shadow: var(--shadow-light);
+    border: 1px solid var(--border-primary);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.warm-section:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+    border-color: var(--border-accent);
+}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -915,42 +944,91 @@ def embedded_database_sidebar():
     # Only show database section if it's actually working
     if database_available:
         st.sidebar.markdown("---")
-        st.sidebar.subheader("🗄️ Database")
+        st.sidebar.markdown("### 🗄️ Database")
         st.sidebar.success("✅ Available")
         
-        # Database actions - styled like other status indicators
+        # Database actions - styled like other status indicators with enhanced visibility
         st.sidebar.markdown(f"""
-        <div style="background-color: #ffffff; border-radius: 8px; padding: 1rem; margin: 0.5rem 0; box-shadow: 0 1px 4px rgba(212, 146, 111, 0.06); display: flex; align-items: center;">
-            <span style="color: #3d3530; margin-right: 0.5rem;">🌐</span>
-            <a href="{manager.base_url}" target="_blank" style="color: #3d3530; text-decoration: none; font-weight: 500; flex-grow: 1;">Open Database</a>
+        <div style="background-color: var(--bg-card); border-radius: 8px; padding: 1rem; margin: 0.5rem 0; box-shadow: var(--shadow-light); display: flex; align-items: center; border: 1px solid var(--border-accent);">
+            <span style="color: var(--text-primary); margin-right: 0.5rem;">🌐</span>
+            <a href="{manager.base_url}" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: 600; flex-grow: 1;">Open Database</a>
         </div>
         """, unsafe_allow_html=True)
         
-        # Show configuration status
+        # Show configuration status with enhanced visibility
         config_exists = manager.config_file.exists()
         if config_exists:
-            st.sidebar.info("⚙️ Configured")
+            st.sidebar.markdown("""
+            <div style="background-color: var(--info-bg); border-radius: 8px; padding: 0.8rem; margin: 0.5rem 0; border: 1px solid var(--info-border); color: var(--info-text); font-weight: 500;">
+                ⚙️ Configuration Complete
+            </div>
+            """, unsafe_allow_html=True)
         else:
-            st.sidebar.warning("⚙️ Setup Required")
+            st.sidebar.markdown("""
+            <div style="background-color: var(--warning-bg); border-radius: 8px; padding: 0.8rem; margin: 0.5rem 0; border: 1px solid var(--warning-border); color: var(--warning-text); font-weight: 500;">
+                ⚙️ Setup Required
+            </div>
+            """, unsafe_allow_html=True)
 
 def main():
     # Inject JavaScript for scroll position preservation
     st.markdown(scroll_js, unsafe_allow_html=True)
     
-    # Add sidebar title and styling
+    # Add sidebar title and styling with enhanced visibility
     st.sidebar.markdown("""
-    <div style="padding: 1rem 0.5rem; margin-bottom: 1rem; border-bottom: 2px solid #e8ddd4;">
-        <h3 style="color: #3d3530; margin: 0; font-size: 1.2rem; font-weight: 600;">📊 Navigation</h3>
+    <div style="padding: 1rem 0.5rem; margin-bottom: 1rem; border-bottom: 2px solid var(--border-accent); background-color: var(--bg-accent); border-radius: 8px 8px 0 0;">
+        <h3 style="color: var(--text-primary); margin: 0; font-size: 1.2rem; font-weight: 700;">📊 Navigation</h3>
     </div>
     """, unsafe_allow_html=True)
     
-    # Navigation menu
-    page = st.sidebar.radio(
-        "",
-        ["Upload & Process", "Header Mapping", "Master Sheet", "Analytics"],
-        label_visibility="collapsed",
-        key="page_navigation"
-    )
+    # Add custom CSS for navigation items with enhanced indicators
+    st.sidebar.markdown("""
+    <style>
+    /* Custom navigation styling with clear indicators */
+    .nav-item-container .stRadio > div > label {
+        padding-left: 2.8rem !important;
+        position: relative !important;
+    }
+    
+    /* Add circle indicators for all items */
+    .nav-item-container .stRadio > div > label:before {
+        content: '' !important;
+        position: absolute !important;
+        left: 1.2rem !important;
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        width: 12px !important;
+        height: 12px !important;
+        border: 2px solid #d4b3a0 !important;
+        border-radius: 50% !important;
+        background: #ffffff !important;
+    }
+    
+    /* Fill circle for selected item */
+    .nav-item-container .stRadio > div > label[data-checked="true"]:before {
+        background: #d4b3a0 !important;
+        box-shadow: 0 0 5px rgba(212, 146, 111, 0.5) !important;
+    }
+    
+    /* Enhanced selected state */
+    .nav-item-container .stRadio > div > label[data-checked="true"] {
+        background: #f0e6d8 !important;
+        font-weight: 700 !important;
+        border-left: 4px solid #d4b3a0 !important;
+    }
+    </style>
+    """, unsafe_allow_html=True)
+    
+    # Navigation menu with custom container
+    with st.sidebar.container():
+        st.markdown('<div class="nav-item-container">', unsafe_allow_html=True)
+        page = st.radio(
+            "",
+            ["Upload & Process", "Header Mapping", "Master Sheet", "Analytics"],
+            label_visibility="collapsed",
+            key="page_navigation"
+        )
+        st.markdown('</div>', unsafe_allow_html=True)
     
     # Update current page in session state
     st.session_state.current_page = page
@@ -974,15 +1052,15 @@ def upload_and_process_page():
     # Show main header only on first page
     st.markdown("""
     <div class="main-header">
-        <h1>📊 Spreadsheet Consolidator</h1>
+        <h1>Mastersheet CRM Tool</h1>
         <p>Transform multiple spreadsheets into unified, standardized data with intelligent header mapping</p>
     </div>
     """, unsafe_allow_html=True)
     
     st.markdown("""
     <div class="feature-card">
-        <h2 style="color: #b8956e; margin-top: 0;">📁 Upload & Process Files</h2>
-        <p style="color: #8b7a6b; margin-bottom: 0;">Start by uploading your spreadsheet files. Supported formats: CSV, Excel (.xlsx, .xls)</p>
+        <h2 style="color: var(--text-accent); margin-top: 0;">📁 Upload & Process Files</h2>
+        <p style="color: var(--text-muted); margin-bottom: 0;">Start by uploading your spreadsheet files. Supported formats: CSV, Excel (.xlsx, .xls)</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -996,8 +1074,8 @@ def upload_and_process_page():
     
     if uploaded_files:
         st.markdown(f"""
-        <div style="background: linear-gradient(45deg, #e8ddd4, #f0e6d8); padding: 1rem; border-radius: 8px; margin: 1rem 0; box-shadow: 0 2px 6px rgba(212, 146, 111, 0.08); border: 1px solid #f5f0eb;">
-            <h4 style="color: #3d3530; margin: 0;">✨ Successfully uploaded {len(uploaded_files)} files</h4>
+        <div style="background: var(--bg-accent); padding: 1rem; border-radius: 8px; margin: 1rem 0; box-shadow: var(--shadow-light); border: 1px solid var(--border-accent);">
+            <h4 style="color: var(--text-primary); margin: 0;">✨ Successfully uploaded {len(uploaded_files)} files</h4>
         </div>
         """, unsafe_allow_html=True)
         
@@ -1005,9 +1083,9 @@ def upload_and_process_page():
         with st.expander("📋 View Uploaded Files", expanded=True):
             for file in uploaded_files:
                 st.markdown(f"""
-                <div style="background: linear-gradient(135deg, #ffffff 0%, #fefcfa 100%); padding: 0.8rem; border-radius: 6px; margin: 0.5rem 0; border-left: 3px solid #e8ddd4; color: #3d3530; box-shadow: 0 1px 4px rgba(212, 146, 111, 0.06);">
+                <div style="background: var(--bg-card); padding: 0.8rem; border-radius: 6px; margin: 0.5rem 0; border-left: 3px solid var(--accent-primary); color: var(--text-primary); box-shadow: var(--shadow-light);">
                     <strong>📄 {file.name}</strong><br>
-                    <small style="color: #8b7a6b;">Size: {file.size:,} bytes</small>
+                    <small style="color: var(--text-muted);">Size: {file.size:,} bytes</small>
                 </div>
                 """, unsafe_allow_html=True)
         
@@ -1024,22 +1102,22 @@ def upload_and_process_page():
                 with col1:
                     st.markdown(f"""
                     <div class="metric-container">
-                        <h3 style="color: #b8956e; margin: 0 0 0.5rem 0;">{result['file_count']}</h3>
-                        <p style="margin: 0; color: #8b7a6b;">Files Processed</p>
+                        <h3 style="color: var(--text-accent); margin: 0 0 0.5rem 0;">{result['file_count']}</h3>
+                        <p style="margin: 0; color: var(--text-muted);">Files Processed</p>
                     </div>
                     """, unsafe_allow_html=True)
                 with col2:
                     st.markdown(f"""
                     <div class="metric-container">
-                        <h3 style="color: #b8956e; margin: 0 0 0.5rem 0;">{result['total_sheets']}</h3>
-                        <p style="margin: 0; color: #8b7a6b;">Total Sheets</p>
+                        <h3 style="color: var(--text-accent); margin: 0 0 0.5rem 0;">{result['total_sheets']}</h3>
+                        <p style="margin: 0; color: var(--text-muted);">Total Sheets</p>
                     </div>
                     """, unsafe_allow_html=True)
                 with col3:
                     st.markdown(f"""
                     <div class="metric-container">
-                        <h3 style="color: #b8956e; margin: 0 0 0.5rem 0;">{len(result['headers'])}</h3>
-                        <p style="margin: 0; color: #8b7a6b;">Unique Headers</p>
+                        <h3 style="color: var(--text-accent); margin: 0 0 0.5rem 0;">{len(result['headers'])}</h3>
+                        <p style="margin: 0; color: var(--text-muted);">Unique Headers</p>
                     </div>
                     """, unsafe_allow_html=True)
                 
@@ -1056,8 +1134,8 @@ def upload_and_process_page():
 def header_mapping_page():
     st.markdown("""
     <div class="feature-card">
-        <h2 style="color: #b8956e; margin-top: 0;">🔧 Header Mapping Configuration</h2>
-        <p style="color: #8b7a6b; margin-bottom: 0;">Review and adjust header mappings to standardize your data columns</p>
+        <h2 style="color: var(--text-accent); margin-top: 0;">🔧 Header Mapping Configuration</h2>
+        <p style="color: var(--text-muted); margin-bottom: 0;">Review and adjust header mappings to standardize your data columns</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -1125,8 +1203,8 @@ def header_mapping_page():
 def master_sheet_page():
     st.markdown("""
     <div class="feature-card">
-        <h2 style="color: #b8956e; margin-top: 0;">📋 Unified Master Sheet</h2>
-        <p style="color: #8b7a6b; margin-bottom: 0;">View, filter, and export your consolidated data</p>
+        <h2 style="color: var(--text-accent); margin-top: 0;">📋 Unified Master Sheet</h2>
+        <p style="color: var(--text-muted); margin-bottom: 0;">View, filter, and export your consolidated data</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -1159,29 +1237,29 @@ def master_sheet_page():
         with col1:
             st.markdown(f"""
             <div class="metric-container" style="text-align: center;">
-                <h2 style="color: #b8956e; margin: 0 0 0.5rem 0;">{summary['total_rows']:,}</h2>
-                <p style="margin: 0; color: #8b7a6b; font-weight: 600;">Total Rows</p>
+                <h2 style="color: var(--text-accent); margin: 0 0 0.5rem 0;">{summary['total_rows']:,}</h2>
+                <p style="margin: 0; color: var(--text-muted); font-weight: 600;">Total Rows</p>
             </div>
             """, unsafe_allow_html=True)
         with col2:
             st.markdown(f"""
             <div class="metric-container" style="text-align: center;">
-                <h2 style="color: #b8956e; margin: 0 0 0.5rem 0;">{summary['total_columns']}</h2>
-                <p style="margin: 0; color: #8b7a6b; font-weight: 600;">Total Columns</p>
+                <h2 style="color: var(--text-accent); margin: 0 0 0.5rem 0;">{summary['total_columns']}</h2>
+                <p style="margin: 0; color: var(--text-muted); font-weight: 600;">Total Columns</p>
             </div>
             """, unsafe_allow_html=True)
         with col3:
             st.markdown(f"""
             <div class="metric-container" style="text-align: center;">
-                <h2 style="color: #b8956e; margin: 0 0 0.5rem 0;">{summary['source_files']}</h2>
-                <p style="margin: 0; color: #8b7a6b; font-weight: 600;">Source Files</p>
+                <h2 style="color: var(--text-accent); margin: 0 0 0.5rem 0;">{summary['source_files']}</h2>
+                <p style="margin: 0; color: var(--text-muted); font-weight: 600;">Source Files</p>
             </div>
             """, unsafe_allow_html=True)
         with col4:
             st.markdown(f"""
             <div class="metric-container" style="text-align: center;">
-                <h2 style="color: #b8956e; margin: 0 0 0.5rem 0;">{summary['source_sheets']}</h2>
-                <p style="margin: 0; color: #8b7a6b; font-weight: 600;">Source Sheets</p>
+                <h2 style="color: var(--text-accent); margin: 0 0 0.5rem 0;">{summary['source_sheets']}</h2>
+                <p style="margin: 0; color: var(--text-muted); font-weight: 600;">Source Sheets</p>
             </div>
             """, unsafe_allow_html=True)
         
@@ -1287,8 +1365,8 @@ def master_sheet_page():
 def analytics_page():
     st.markdown("""
     <div class="feature-card">
-        <h2 style="color: #b8956e; margin-top: 0;">📊 Data Analytics</h2>
-        <p style="color: #8b7a6b; margin-bottom: 0;">Explore insights and statistics from your consolidated data</p>
+        <h2 style="color: var(--text-accent); margin-top: 0;">📊 Data Analytics</h2>
+        <p style="color: var(--text-muted); margin-bottom: 0;">Explore insights and statistics from your consolidated data</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -1298,11 +1376,11 @@ def analytics_page():
     
     master_data = st.session_state.master_data
     
-    # Data quality overview with warm theme styling
+    # Data quality overview with adaptive theme styling
     st.markdown("""
-    <div style="background: linear-gradient(135deg, #f0e3d6 0%, #e8ddd4 100%); padding: 1.5rem; border-radius: 12px; margin: 1rem 0; border: 1px solid #f0e6d8; box-shadow: 0 2px 8px rgba(212, 146, 111, 0.1);">
-        <h3 style="color: #3d3530; margin: 0; text-align: center;">🔍 Data Quality Analysis</h3>
-        <p style="color: #8b7a6b; margin: 0.5rem 0 0 0; text-align: center;">Comprehensive overview of your data completeness</p>
+    <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 12px; margin: 1rem 0; border: 1px solid var(--border-accent); box-shadow: var(--shadow-light);">
+        <h3 style="color: var(--text-primary); margin: 0; text-align: center;">🔍 Data Quality Analysis</h3>
+        <p style="color: var(--text-muted); margin: 0.5rem 0 0 0; text-align: center;">Comprehensive overview of your data completeness</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -1333,16 +1411,24 @@ def analytics_page():
     
     completeness_df = pd.DataFrame(completeness_data)
     
-    # Visualize data completeness with warm theme colors
+    # Visualize data completeness with adaptive theme colors
     fig = px.bar(
         completeness_df,
         x='Column',
         y='Completeness (%)',
         title='Data Completeness by Column',
         color='Completeness (%)',
-        color_continuous_scale=['#e8ddd4', '#d4b3a0', '#b8956e']
+        color_continuous_scale=['#D4926F', '#B8956E', '#9D7A5A']
     )
     fig.update_xaxes(tickangle=45)
+    fig.update_layout(
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(color='var(--text-primary)'),
+        title=dict(font=dict(color='var(--text-primary)')),
+        xaxis=dict(color='var(--text-primary)'),
+        yaxis=dict(color='var(--text-primary)')
+    )
     st.plotly_chart(fig, use_container_width=True)
     
     # Show completeness table with index starting from 1
@@ -1350,31 +1436,39 @@ def analytics_page():
     completeness_display.index = completeness_display.index + 1
     st.dataframe(completeness_display, use_container_width=True)
     
-    # Source file distribution with warm theme styling
+    # Source file distribution with adaptive theme styling
     st.markdown("""
-    <div style="background: linear-gradient(135deg, #f0e3d6 0%, #e8ddd4 100%); padding: 1.5rem; border-radius: 12px; margin: 2rem 0 1rem 0; border: 1px solid #f0e6d8; box-shadow: 0 2px 8px rgba(212, 146, 111, 0.1);">
-        <h3 style="color: #3d3530; margin: 0 0 1rem 0; text-align: center;">📈 Source File Distribution</h3>
-        <p style="color: #8b7a6b; margin: 0; text-align: center;">Visualize how your data is distributed across source files</p>
+    <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 12px; margin: 2rem 0 1rem 0; border: 1px solid var(--border-accent); box-shadow: var(--shadow-light);">
+        <h3 style="color: var(--text-primary); margin: 0 0 1rem 0; text-align: center;">📈 Source File Distribution</h3>
+        <p style="color: var(--text-muted); margin: 0; text-align: center;">Visualize how your data is distributed across source files</p>
     </div>
     """, unsafe_allow_html=True)
     
-    # File distribution with warm theme colors - centered, no second pie chart
+    # File distribution with adaptive theme colors - centered, no second pie chart
     file_counts = master_data['source_file'].value_counts()
     fig_files = px.pie(
         values=file_counts.values,
         names=file_counts.index,
         title="Records by Source File",
-        color_discrete_sequence=['#e8ddd4', '#d4b3a0', '#b8956e', '#c8a694', '#e0bfa8']
+        color_discrete_sequence=['#D4926F', '#B8956E', '#9D7A5A', '#C8956E', '#A0845C']
     )
-    # Make the chart a bit larger and centered
-    fig_files.update_layout(height=500, width=700, margin=dict(l=50, r=50, t=80, b=50))
+    # Make the chart a bit larger and centered with adaptive styling
+    fig_files.update_layout(
+        height=500, 
+        width=700, 
+        margin=dict(l=50, r=50, t=80, b=50),
+        plot_bgcolor='rgba(0,0,0,0)',
+        paper_bgcolor='rgba(0,0,0,0)',
+        font=dict(color='var(--text-primary)'),
+        title=dict(font=dict(color='var(--text-primary)'))
+    )
     st.plotly_chart(fig_files, use_container_width=True)
     
-    # Column statistics with warm theme styling
+    # Column statistics with adaptive theme styling
     st.markdown("""
-    <div style="background: linear-gradient(135deg, #f0e3d6 0%, #e8ddd4 100%); padding: 1.5rem; border-radius: 12px; margin: 2rem 0 1rem 0; border: 1px solid #f0e6d8; box-shadow: 0 2px 8px rgba(212, 146, 111, 0.1);">
-        <h3 style="color: #3d3530; margin: 0 0 1rem 0; text-align: center;">📋 Detailed Column Analysis</h3>
-        <p style="color: #8b7a6b; margin: 0; text-align: center;">Deep dive into individual column statistics</p>
+    <div style="background: var(--bg-accent); padding: 1.5rem; border-radius: 12px; margin: 2rem 0 1rem 0; border: 1px solid var(--border-accent); box-shadow: var(--shadow-light);">
+        <h3 style="color: var(--text-primary); margin: 0 0 1rem 0; text-align: center;">📋 Detailed Column Analysis</h3>
+        <p style="color: var(--text-muted); margin: 0; text-align: center;">Deep dive into individual column statistics</p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -1416,19 +1510,22 @@ def analytics_page():
             with col5:
                 st.metric("Std Dev", f"{numeric_stats['std']:.2f}")
             
-            # Create histogram for numeric data with warm theme colors
+            # Create histogram for numeric data with adaptive theme colors
             numeric_data = pd.to_numeric(master_data[selected_column], errors='coerce').dropna()
             fig_hist = px.histogram(
                 x=numeric_data,
                 nbins=30,
                 title=f"Distribution of {selected_column}",
-                color_discrete_sequence=['#b8956e'],
+                color_discrete_sequence=['#D4926F'],
                 opacity=0.8
             )
             fig_hist.update_layout(
                 plot_bgcolor='rgba(0,0,0,0)',
                 paper_bgcolor='rgba(0,0,0,0)',
-                font_color='#3d3530'
+                font=dict(color='var(--text-primary)'),
+                title=dict(font=dict(color='var(--text-primary)')),
+                xaxis=dict(color='var(--text-primary)'),
+                yaxis=dict(color='var(--text-primary)')
             )
             st.plotly_chart(fig_hist, use_container_width=True)
 
