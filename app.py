@@ -9,8 +9,8 @@ import time
 
 # Page configuration
 st.set_page_config(
-    page_title="Spreadsheet Consolidator",
-    page_icon="📊",
+    page_title="MasterCRM Repo Tool",
+    page_icon="https://i.ibb.co/4wQpPPX6/transparent.png",
     layout="wide",
     initial_sidebar_state="expanded"
 )
