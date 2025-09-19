@@ -1,0 +1,63 @@
+version: '3.8'
+
+services:
+  baserow:
+    image: baserow/baserow:1.35.1
+    container_name: spreadsheet_consolidator_baserow
+    restart: unless-stopped
+    environment:
+      - BASEROW_PUBLIC_URL=http://localhost:8080
+      - DATABASE_URL=postgresql://baserow:baserow_password@postgres:5432/baserow
+      - REDIS_URL=redis://redis:6379/0
+    ports:
+      - "8080:80"
+    volumes:
+      - baserow_data:/baserow/data
+    depends_on:
+      - postgres
+      - redis
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+    networks:
+      - baserow_network
+
+  postgres:
+    image: postgres:13-alpine
+    container_name: spreadsheet_consolidator_postgres
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=baserow
+      - POSTGRES_USER=baserow
+      - POSTGRES_PASSWORD=baserow_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+    networks:
+      - baserow_network
+
+  redis:
+    image: redis:7-alpine
+    container_name: spreadsheet_consolidator_redis
+    restart: unless-stopped
+    volumes:
+      - redis_data:/data
+    deploy:
+      resources:
+        limits:
+          memory: 64M
+    networks:
+      - baserow_network
+
+volumes:
+  baserow_data:
+  postgres_data:
+  redis_data:
+
+networks:
+  baserow_network:
+    driver: bridge
