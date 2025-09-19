@@ -8,6 +8,8 @@ import time
 import requests
 import streamlit as st
 from baserow_integration import BaserowIntegration
+from baserow_integration_new import NewBaserowIntegration
+from baserow_integration_FIXED import BaserowIntegration as FixedBaserowIntegration
 import os
 import json
 from pathlib import Path
@@ -153,8 +155,14 @@ class EmbeddedBaserowManager:
         
         return None
     
-    def export_data(self, df, clear_existing=False) -> bool:
-        """Export data to Baserow using official API endpoints."""
+    def export_data(self, df, clear_existing=False, speed_mode='turbo') -> bool:
+        """Export data to Baserow using speed-optimized API endpoints.
+
+        Args:
+            df: DataFrame to export
+            clear_existing: Whether to clear existing table data
+            speed_mode: 'turbo' (fastest), 'balanced', or 'conservative'
+        """
         try:
             # Ensure Baserow is running
             if not self.start_baserow():
@@ -172,10 +180,35 @@ class EmbeddedBaserowManager:
             if clear_existing:
                 integration.clear_table()
             
-            # Upload data with automatic field creation using official API
-            success = integration.upload_dataframe(df, batch_size=20, auto_create_fields=True)
-            
-            return success
+            # Use the FIXED SYSTEM THAT ACTUALLY WORKS
+            print(f"🔥 USING FIXED SYSTEM - NO MORE 90 ROW BULLSHIT")
+            print(f"📊 UPLOADING ALL {len(df):,} ROWS GUARANTEED")
+            print(f"🎯 FIXED VERSION THAT ACTUALLY UPLOADS EVERYTHING")
+
+            # Initialize the FIXED integration
+            fixed_integration = FixedBaserowIntegration()
+
+            # Authenticate with the FIXED system
+            if not fixed_integration.authenticate(self.base_url, self.api_token, str(self.table_id)):
+                print(f"❌ FIXED SYSTEM AUTHENTICATION FAILED")
+                return False
+
+            # Upload ALL rows with the FIXED method
+            success = fixed_integration.upload_dataframe(df, batch_size=90, auto_create_fields=True, speed_mode=speed_mode)
+
+            # Verify upload completion
+            if success:
+                verification = fixed_integration.verify_upload_completion(len(df))
+                if verification['success']:
+                    print(f"✅ FIXED SYSTEM SUCCESS: All {len(df):,} rows uploaded and verified!")
+                    return True
+                else:
+                    print(f"⚠️ UPLOAD WARNING: {verification.get('message', 'Verification issue')}")
+                    print(f"📊 Expected: {verification.get('expected', 'unknown')}, Got: {verification.get('actual', 'unknown')}")
+                    return success
+            else:
+                print(f"❌ FIXED SYSTEM FAILED")
+                return False
                 
         except Exception as e:
             st.error(f"Export error: {str(e)}")

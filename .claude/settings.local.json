@@ -8,7 +8,10 @@
       "Bash(git commit:*)",
       "Bash(git push:*)",
       "Bash(pip install:*)",
-      "Bash(streamlit run:*)"
+      "Bash(streamlit run:*)",
+      "Read(//var/folders/_7/lxqrj2mx7dsgmk2dktg5rvnw0000gn/T/TemporaryItems/NSIRD_screencaptureui_LjTG03/**)",
+      "Read(//var/folders/_7/lxqrj2mx7dsgmk2dktg5rvnw0000gn/T/TemporaryItems/NSIRD_screencaptureui_7oSliT/**)",
+      "Read(//Users/vanshkumawat/Desktop/**)"
     ],
     "deny": [],
     "ask": []
