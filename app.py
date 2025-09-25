@@ -10,6 +10,9 @@ from final_working_exporter import export_batch_final, create_final_batches
 from typing import Dict, List
 import io
 import time
+import os
+import webbrowser
+from pathlib import Path
 
 # Page configuration
 st.set_page_config(
@@ -959,11 +962,26 @@ def embedded_database_sidebar():
         st.sidebar.markdown("### 🗄️ Database")
         st.sidebar.success("✅ Available")
         
-        # Database actions - styled like other status indicators with enhanced visibility
+        # Add a prominent "Open Database" button
+        if st.sidebar.button("🌐 Open Database", key="open_database_btn", use_container_width=True):
+            # Use JavaScript to open the database URL in a new tab
+            js = f'''
+            <script type="text/javascript">
+                window.open("{manager.base_url}", "_blank").focus();
+            </script>
+            '''
+            st.sidebar.markdown(js, unsafe_allow_html=True)
+        
+        # Also keep the styled link as a backup option
         st.sidebar.markdown(f"""
-        <div style="background-color: var(--bg-card); border-radius: 8px; padding: 1rem; margin: 0.5rem 0; box-shadow: var(--shadow-light); display: flex; align-items: center; border: 1px solid var(--border-accent);">
-            <span style="color: var(--text-primary); margin-right: 0.5rem;">🌐</span>
-            <a href="{manager.base_url}" target="_blank" style="color: var(--text-primary); text-decoration: none; font-weight: 600; flex-grow: 1;">Open Database</a>
+        <div style="background-color: var(--accent-primary); border-radius: 8px; padding: 1rem; margin: 0.5rem 0; 
+             box-shadow: var(--shadow-medium); display: flex; align-items: center; 
+             border: 1px solid var(--border-accent); cursor: pointer; transition: all 0.3s;">
+            <span style="color: var(--text-inverse); margin-right: 0.5rem;">🔗</span>
+            <a href="{manager.base_url}" target="_blank" 
+               style="color: var(--text-inverse); text-decoration: none; font-weight: 600; flex-grow: 1;">
+               Access Database Portal
+            </a>
         </div>
         """, unsafe_allow_html=True)
         
@@ -1041,6 +1059,50 @@ def main():
             key="page_navigation"
         )
         st.markdown('</div>', unsafe_allow_html=True)
+    
+    # Add a prominent Open Database button directly in the sidebar
+    st.sidebar.markdown("---")
+    st.sidebar.markdown("### 🗄️ Database Access")
+    
+    # Get the baserow URL with specific workspace
+    manager = st.session_state.baserow_manager
+    database_url = "http://localhost:8080/workspace/125"
+    
+    # Define a function to open the URL directly
+    def open_database_url():
+        import subprocess
+        
+        # Direct URL to the specific workspace
+        specific_url = "http://localhost:8080/workspace/125"
+        
+        # Try multiple methods to ensure the URL opens
+        try:
+            # Method 1: Use webbrowser module directly
+            webbrowser.open(specific_url)
+            
+            # Method 2: Also try using the system's default browser via subprocess
+            # This provides a fallback if the webbrowser module doesn't work
+            if os.name == 'posix':  # macOS or Linux
+                subprocess.Popen(['python3', 'open_workspace.py'], 
+                               cwd=os.path.dirname(os.path.abspath(__file__)))
+            else:  # Windows
+                subprocess.Popen(['python', 'open_workspace.py'], 
+                               cwd=os.path.dirname(os.path.abspath(__file__)))
+        except Exception as e:
+            st.sidebar.error(f"Error opening database: {e}")
+            # Last resort: Show the URL to the user
+            st.sidebar.info(f"Please manually open: {specific_url}")
+    
+    # Add a prominent button using Streamlit's native button
+    if st.sidebar.button("🌐 OPEN DATABASE", key="open_db_btn", use_container_width=True):
+        open_database_url()
+        
+    # Also add a direct link as a backup
+    specific_url = "http://localhost:8080/workspace/125"
+    
+    st.sidebar.markdown(f"""<div style='text-align: center; margin-top: 5px;'>
+        <a href='{specific_url}' target='_blank' style='font-size: 0.8rem; color: #d4926f;'>Direct link to database</a>
+    </div>""", unsafe_allow_html=True)
     
     # Update current page in session state
     st.session_state.current_page = page
