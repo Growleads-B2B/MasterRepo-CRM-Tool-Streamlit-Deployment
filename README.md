@@ -1,6 +1,10 @@
-# Spreadsheet Consolidator
+# MasterCRM Repo Tool
 
-A powerful tool to consolidate multiple spreadsheets with different header structures into a unified master sheet with standardized headers.
+A powerful CRM data consolidation tool that transforms multiple spreadsheets with different header structures into a unified master sheet with standardized headers.
+
+## 🚀 Recent Updates
+
+**✅ Database Independence**: Removed Baserow dependencies for maximum flexibility and cost efficiency.
 
 ## Features
 
@@ -12,6 +16,7 @@ A powerful tool to consolidate multiple spreadsheets with different header struc
 - **Export Options**: Download consolidated data as Excel or CSV
 - **Analytics Dashboard**: View data quality metrics and distribution charts
 - **Source Tracking**: Keeps track of which file and sheet each row came from
+- **Database Ready**: Prepared for integration with various database solutions
 
 ## Installation
 
@@ -132,6 +137,25 @@ You can extend the header mapping by:
 - OpenPyXL
 - FuzzyWuzzy
 - Plotly
+
+## Database Integration
+
+The tool is now database-agnostic and ready for integration with various database solutions:
+
+- **SQLite**: Free, file-based, perfect for single-user scenarios
+- **Airtable**: Spreadsheet-like interface with powerful API
+- **Google Sheets**: Real-time collaboration with familiar interface
+- **Supabase**: Scalable PostgreSQL-based solution
+- **Notion**: All-in-one workspace with database functionality
+
+📋 **See [DATABASE_RECOMMENDATIONS.md](DATABASE_RECOMMENDATIONS.md) for detailed comparison and implementation guides.**
+
+## Recent Changes
+
+- ✅ Removed Baserow dependencies
+- ✅ Cleaned up codebase for maximum efficiency
+- ✅ Added database flexibility for cost optimization
+- ✅ Maintained all core functionality
 
 ## License
 
